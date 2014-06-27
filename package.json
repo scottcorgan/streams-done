@@ -1,6 +1,6 @@
 {
   "name": "streams-done",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get a callback when all streams have ended",
   "main": "index.js",
   "directories": {

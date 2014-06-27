@@ -5,13 +5,21 @@ module.exports = function (streams, callback) {
   var emitter = through();
   
   each(streams, function (stream, idx, done) {
-    var localStream = through();
-    stream.pipe(localStream);
-    stream.on('error', done);
-    stream.on('end', function () {
-      emitter.emit('stream-end', stream);
-      done();
-    });
+    var called = false;
+    
+    stream.once('error', done);
+    stream.once('finish', end);
+    stream.once('close', end);
+    
+    function end () {
+      if (!called) {
+        process.nextTick(function () {
+          emitter.emit('stream-end', stream);
+          done()
+        });
+      };
+      called = true;
+    }
   }, callback);
   
   return emitter;
