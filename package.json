@@ -1,6 +1,6 @@
 {
   "name": "streams-done",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Get a callback when all streams have ended",
   "main": "index.js",
   "directories": {
@@ -15,6 +15,10 @@
     "callback",
     "done"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottcorgan/streams-done.git"
+  },
   "author": "Scott Corgan",
   "license": "MIT",
   "devDependencies": {
